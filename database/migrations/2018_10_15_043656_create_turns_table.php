@@ -17,7 +17,7 @@ class CreateTurnsTable extends Migration
             $table->integer('id');
             $table->unsignedInteger('game_id');
             $table->foreign('game_id')->references('id')->on('games')->onDelete('cascade');
-            $table->uuid('player_id');
+            $table->unsignedInteger('player_id');
             $table->foreign('player_id')->references('id')->on('players')->onDelete('cascade');
             $table->enum('player_type', ['x', 'o']);
             $table->enum('location', [0, 1, 2, 3, 4, 5, 6, 7, 8]);

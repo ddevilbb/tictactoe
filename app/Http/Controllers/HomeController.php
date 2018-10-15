@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Player;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -13,7 +15,15 @@ class HomeController extends Controller
 
     public function index(Request $request)
     {
-        print_r(123);
-        print_r($request->user());
+        //TODO: закомментированные строки добавить в PlayerMiddleware
+//        if (!Auth::user()) {
+//            $player = Player::create([
+//                'type' => 'human',
+//                'score' => 0
+//            ]);
+//
+//            Auth::loginUsingId($player->id, true);
+//        }
+        return view('home');
     }
 }
