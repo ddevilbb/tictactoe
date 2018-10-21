@@ -13,7 +13,7 @@ class PlayersTableSeeder extends Seeder
     {
         DB::table('players')->insert([
             'type' => 'ai',
-            'score' => 0
+            'score' => 0,
         ]);
     }
 }

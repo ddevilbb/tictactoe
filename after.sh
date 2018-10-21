@@ -10,5 +10,7 @@
 
 cd code
 composer install
-php artisan migrate
-php artisan db:seed
+php artisan migrate --seed
+php artisan clear-compiled
+npm install
+npm run prod

@@ -1,24 +1,10 @@
-webpackJsonp([1],{
-
-/***/ 67:
-/***/ (function(module, exports, __webpack_require__) {
-
-__webpack_require__(68);
-module.exports = __webpack_require__(69);
-
-
-/***/ }),
-
-/***/ 68:
-/***/ (function(module, exports) {
-
 $(document).ready(function () {
-  var modal = $('.modal');
+  let modal = $('.modal');
   $('.history-link').click(function (event) {
     event.preventDefault();
 
-    var $this = $(this),
-        url = $this.data('href');
+    let $this = $(this),
+      url = $this.data('href');
 
     $.ajax({
       url: url,
@@ -33,8 +19,8 @@ $(document).ready(function () {
   $('body').on('click', '.toggle-turns', function (event) {
     event.preventDefault();
 
-    var $this = $(this),
-        game_id = $this.data('game-id');
+    let $this = $(this),
+      game_id = $this.data('game-id');
 
     $('.hidden-table-row').filter(function (index, item) {
       return $(item).data('game-id') === game_id;
@@ -43,14 +29,3 @@ $(document).ready(function () {
     });
   });
 });
-
-/***/ }),
-
-/***/ 69:
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ })
-
-},[67]);

@@ -15,7 +15,8 @@ class CreateGamesTable extends Migration
     {
         Schema::create('games', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('winner_id')->nullable();
+            $table->unsignedInteger('player_id')->nullable();
+            $table->enum('status', ['win', 'loose', 'tie'])->nullable();
             $table->timestamp('end_date')->nullable();
             $table->timestamps();
         });

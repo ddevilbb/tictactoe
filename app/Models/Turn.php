@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Turn extends Model
 {
     public $incrementing = false;
-    public $fillable = ['id', 'game_id', 'player_id', 'player_type', 'location'];
+    public $fillable = ['game_id', 'player_id', 'player_type', 'location'];
 
     /**
      * Get game entity

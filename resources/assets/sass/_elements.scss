@@ -1,0 +1,165 @@
+// Elements
+#wrapper {
+  min-width: 130px;
+}
+
+.logo {
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  background-image: url('/svg/logo.svg');
+  background-repeat: no-repeat;
+}
+
+.table td {
+  vertical-align: middle;
+}
+
+.tic-board-wrapper {
+  position: relative;
+  width: 35vw;
+  height: 35vw;
+  margin: 15px auto;
+
+  .tic-board {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: 0;
+    border-collapse: collapse;
+    .tic-cell {
+      position: relative;
+      border: 1px solid $gray-300;
+      font-weight: bold;
+      padding: 0;
+    }
+    .tic-turn-x::before, .tic-turn-o::before {
+      position: absolute;
+      display: block;
+      left: 4.5%;
+      top: 4.5%;
+      width: 90%;
+      height: 90%;
+      text-align: center;
+    }
+    .tic-turn-x::before {
+      content: '';
+      background-image: url('/svg/sign-x.svg');
+      background-repeat: no-repeat;
+    }
+    .tic-turn-o::before {
+      content: '';
+      background-image: url('/svg/sign-o.svg');
+      background-repeat: no-repeat;
+    }
+  }
+}
+
+@include media-breakpoint-only(xs) {
+  .nav-link {
+    font-size: 11px;
+  }
+  .tic-board-wrapper {
+    width: 70vw;
+    height: 70vw;
+  }
+}
+@include media-breakpoint-only(sm) {
+  .tic-board-wrapper {
+    width: 65vw;
+    height: 65vw;
+  }
+}
+@include media-breakpoint-only(md) {
+  .tic-board-wrapper {
+    width: 60vw;
+    height: 60vw;
+  }
+}
+@include media-breakpoint-only(lg) {
+  .tic-board-wrapper {
+    width: 55vw;
+    height: 55vw;
+  }
+}
+@include media-breakpoint-only(xl) {
+  .tic-board-wrapper {
+    width: 50vw;
+    height: 50vw;
+  }
+}
+
+.sign-x, .sign-o {
+  font-size: 20px;
+  font-weight: bold;
+}
+.sign-x {
+  color: $red;
+}
+.sign-o {
+  color: $blue;
+}
+
+.small-tic-board-wrapper {
+  position:relative;
+  width: 40px;
+  height: 40px;
+
+  .small-tic-board {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: 0;
+    border-collapse: collapse;
+    .tic-cell {
+    position: relative;
+    border: 1px solid $gray-300;
+    font-weight: bold;
+    padding: 0;
+    }
+    .tic-turn-x::before, .tic-turn-o::before {
+      position: absolute;
+      display: block;
+      left: 4.5%;
+      top: 4.5%;
+      width: 90%;
+      height: 90%;
+      text-align: center;
+    }
+    .tic-turn-x::before {
+      content: '';
+      background-image: url('/svg/sign-x.svg');
+      background-repeat: no-repeat;
+    }
+    .tic-turn-o::before {
+      content: '';
+      background-image: url('/svg/sign-o.svg');
+      background-repeat: no-repeat;
+    }
+  }
+}
+
+.toggle-turns {
+  position:relative;
+  top: -2px;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  overflow: hidden;
+  background-image: url('/svg/toggle-icon.svg');
+  background-repeat: no-repeat;
+  background-size: 20px auto;
+  vertical-align: middle;
+  cursor: pointer;
+}
+.toggle-turns.active {
+  background-position: 0 100%;
+}
+
+.hidden-table-row {
+  display: none;
+}

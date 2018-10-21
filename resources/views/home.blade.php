@@ -1,15 +1,10 @@
-<!doctype html>
-<html lang="{{ app()->getLocale() }}">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.app')
 
-        <title>TicTacToe</title>
-
-        <link rel="stylesheet" type="text/css" href="{!! asset('css/app.css') !!}">
-    </head>
-    <body>
-        <script type="text/javascript" src="{!! asset('js/app.js') !!}"></script>
-    </body>
-</html>
+@section('content')
+    <div class="container">
+        <h1 class="text-center">Крестики - нолики</h1>
+        <div class="alert alert-warning">
+            <p><b>Правила игры</b>: игроки по очереди ставят на свободные клетки поля 3х3 знаки (один всегда крестики, другой всегда нолики). Первый, выстроивший в ряд 3 своих фигуры по вертикали, горизонтали или диагонали, выигрывает. Первый ход делает игрок, ставящий крестики.</p>
+        </div>
+    </div>
+@endsection
