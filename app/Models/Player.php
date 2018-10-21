@@ -13,7 +13,7 @@ class Player extends Model implements AuthenticatableContract
     /**
      * @var array
      */
-    protected $fillable = ['type', 'score'];
+    protected $fillable = ['type', 'sign', 'score'];
 
     /**
      * @var array

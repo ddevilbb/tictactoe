@@ -8,6 +8,7 @@ class PlayerService
 {
     /**
      * @return Player
+     * @throws \Throwable
      */
     public function store(): Player
     {
@@ -15,7 +16,7 @@ class PlayerService
 
         $player->type = 'human';
 
-        $player->save();
+        $player->saveOrFail();
 
         return $player;
     }

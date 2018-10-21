@@ -11,5 +11,15 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-   .sass('resources/sass/app.scss', 'public/css');
+mix.webpackConfig({
+  resolve: {
+    alias: {
+      jquery: 'jquery/src/jquery'
+    }
+  }
+});
+
+mix.js('resources/assets/js/app.js', 'public/js')
+  .extract(['jquery', 'bootstrap', 'lodash', 'pusher-js'], 'public/js/vendor.js')
+  .babel('resources/assets/js/board.js', 'public/js/board.js')
+  .sass('resources/assets/sass/app.scss', 'public/css');

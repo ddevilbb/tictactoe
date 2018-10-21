@@ -16,7 +16,8 @@ class CreatePlayersTable extends Migration
         Schema::create('players', function (Blueprint $table) {
             $table->increments('id');
             $table->enum('type', ['human', 'ai']);
-            $table->integer('score');
+            $table->integer('score')->default(0);
+            $table->string('sign', 1)->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
