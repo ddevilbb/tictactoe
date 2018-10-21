@@ -1,5 +1,6 @@
 $(document).ready(function () {
   let modal = $('.modal');
+
   $('.history-link').click(function (event) {
     event.preventDefault();
 

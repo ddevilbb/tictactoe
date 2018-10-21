@@ -20,6 +20,9 @@
   width: 35vw;
   height: 35vw;
   margin: 15px auto;
+  background-image: url('/svg/sign-x.svg');
+  background-repeat: no-repeat;
+  background-position: -9999px -9999px;
 
   .tic-board {
     position: absolute;
@@ -29,6 +32,9 @@
     left: 0;
     margin: 0;
     border-collapse: collapse;
+    background-image: url('/svg/sign-o.svg');
+    background-repeat: no-repeat;
+    background-position: -9999px -9999px;
     .tic-cell {
       position: relative;
       border: 1px solid $gray-300;
