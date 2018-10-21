@@ -12,5 +12,3 @@ cd code
 composer install
 php artisan migrate --seed
 php artisan clear-compiled
-npm install
-npm run prod
