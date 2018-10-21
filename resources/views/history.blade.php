@@ -45,8 +45,8 @@
             </tr>
         @empty
             <tr>
-                <td colspan="3">
-                    <p>Не сыграно ниодной игры!</p>
+                <td colspan="4">
+                    <p class="text-center">Не сыграно ни одной игры!</p>
                 </td>
             </tr>
         @endforelse
