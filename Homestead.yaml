@@ -4,7 +4,7 @@ cpus: 1
 provider: virtualbox
 folders:
     -
-        map: /var/www/tictactoe
+        map: ./
         to: /home/vagrant/code
 sites:
     -
