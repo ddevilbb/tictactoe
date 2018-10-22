@@ -9,6 +9,7 @@
 # which will be run after this script.
 
 cd code
+cp .env.example .env
 composer install
 php artisan migrate --seed
 php artisan clear-compiled
