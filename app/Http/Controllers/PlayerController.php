@@ -22,26 +22,6 @@ class PlayerController extends Controller
         $this->gameService = App::make(GameService::class);
     }
 
-    public function selectSign(Request $request)
-    {
-        return view('select-sign');
-    }
-
-    /**
-     * @param Request $request
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
-     */
-    public function saveSign(Request $request)
-    {
-        $user = Auth::user();
-
-        $user->sign = $request->post('sign');
-
-        $user->save();
-
-        return redirect(route('new_game'));
-    }
-
     public function getHistory(Request $request)
     {
         $user = Auth::user();

@@ -4,6 +4,7 @@
         <tr>
             <th width="10">#</th>
             <th>Игра</th>
+            <th>Сложность</th>
             <th>Статус</th>
             <th width="40">Доска</th>
         </tr>
@@ -15,6 +16,7 @@
                     <span class="toggle-turns" data-game-id="{{ $game->id }}"></span>
                 </td>
                 <td>Игра #{{ $game->id }}</td>
+                <td>{{ prepareGameDifficulty($game->difficulty) }}</td>
                 <td>{{ prepareGameStatus($game->status) }}</td>
                 <td>
                     @include('layouts.small-board', ['board' => prepareBoard($game->turns)])

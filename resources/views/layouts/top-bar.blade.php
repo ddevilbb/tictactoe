@@ -4,18 +4,13 @@
             <a href="{{ route('home') }}" class="navbar-brand mr-0 mr-md-2 logo"></a>
             <nav class="navbar-nav-scroll" role="navigation">
                 <ul class="navbar-nav bd-navbar-nav flex-row">
-                    @if (Request::route()->getName() === 'home')
-                        <li class="nav-item">
-                            <a href="{{ route('select_sign') }}" class="nav-link">Новая игра</a>
-                        </li>
-                    @endif
+                    <li class="nav-item">
+                        <a href="{{ route('select_parameters') }}" class="nav-link">Новая игра</a>
+                    </li>
                     @if (Auth::user())
-                        @if (Request::route()->getName() !== 'home')
+                        @if (Request::route()->getName() === 'show_game')
                             <li class="nav-item">
                                 <a href="{{ route('new_game') }}" class="nav-link">Новая партия</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ route('select_sign') }}" class="nav-link">Сменить роль</a>
                             </li>
                         @endif
                         <li class="nav-item">

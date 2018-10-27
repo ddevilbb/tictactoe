@@ -9,18 +9,18 @@ class TurnService
     /**
      * @param int $game_id
      * @param int $player_id
-     * @param string $player_type
+     * @param string $player_sign
      * @param int $location
      * @return mixed
      * @throws \Throwable
      */
-    public function store(int $game_id, int $player_id, string $player_type, int $location): Turn
+    public function store(int $game_id, int $player_id, string $player_sign, int $location): Turn
     {
         $turn = new Turn();
 
         $turn->game_id = $game_id;
         $turn->player_id = $player_id;
-        $turn->player_type = $player_type;
+        $turn->player_sign = $player_sign;
         $turn->location = $location;
 
         $turn->saveOrFail();
