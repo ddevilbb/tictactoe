@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\Game;
+use App\Models\Player;
 use DateTime;
 
 class GameService
@@ -13,23 +14,34 @@ class GameService
     private $turnService;
 
     /**
-     * GameService constructor.
+     * @var PlayerService
      */
-    public function __construct(TurnService $turnService)
+    private $playerService;
+
+    /**
+     * GameService constructor.
+     *
+     * @param TurnService $turnService
+     * @param PlayerService $playerService
+     */
+    public function __construct(TurnService $turnService, PlayerService $playerService)
     {
         $this->turnService = $turnService;
+        $this->playerService = $playerService;
     }
 
     /**
      * @param int $player_id
+     * @param string $difficulty
      * @return Game
      * @throws \Throwable
      */
-    public function store(int $player_id): Game
+    public function store(int $player_id, string $difficulty): Game
     {
         $game = new Game();
 
         $game->player_id = $player_id;
+        $game->difficulty = $difficulty;
 
         $game->saveOrFail();
 
@@ -78,11 +90,8 @@ class GameService
         $board = $this->prepareBoard($game_id);
         $availTurns = $this->getAvailTurns($board);
 
-        $signX = 'x';
-        $signO = 'o';
-
-        if ($this->checkWinCombinations($board, $signX) ||
-            $this->checkWinCombinations($board, $signO) ||
+        if ($this->checkWinCombinations($board, Player::SIGN_X) ||
+            $this->checkWinCombinations($board, Player::SIGN_O) ||
             count($availTurns) === 0) {
             return true;
         } else {
@@ -92,21 +101,21 @@ class GameService
 
     /**
      * @param int $game_id
-     * @param string $player
+     * @param string $player_sign
      * @return string
      */
-    public function getGameStatus(int $game_id, string $player): string
+    public function getGameStatus(int $game_id, string $player_sign): string
     {
         $board = $this->prepareBoard($game_id);
 
-        $otherPlayer = $player == 'x' ? 'o' : 'x';
+        $other_player_sign = $this->playerService->getOtherPlayerSign($player_sign);
 
-        if ($this->checkWinCombinations($board, $player)) {
-            return 'win';
-        } elseif ($this->checkWinCombinations($board, $otherPlayer)) {
-            return 'loose';
+        if ($this->checkWinCombinations($board, $player_sign)) {
+            return Game::STATUS_WIN;
+        } elseif ($this->checkWinCombinations($board, $other_player_sign)) {
+            return Game::STATUS_LOOSE;
         } else {
-            return 'tie';
+            return Game::STATUS_TIE;
         }
     }
 
@@ -122,7 +131,7 @@ class GameService
 
         if (!empty($turns)) {
             foreach ($turns as $turn) {
-                $board[$turn['location']] = (string) $turn['player_type'];
+                $board[$turn['location']] = (string) $turn['player_sign'];
             }
         }
 
@@ -136,16 +145,16 @@ class GameService
     public function getAvailTurns(array $board): array
     {
         return array_filter($board, function ($sign) {
-            return $sign !== 'x' && $sign !== 'o';
+            return $sign !== Player::SIGN_X && $sign !== Player::SIGN_O;
         });
     }
 
     /**
      * @param array $board
-     * @param string $player
+     * @param string $sign
      * @return bool
      */
-    public function checkWinCombinations(array $board, string $player): bool
+    public function checkWinCombinations(array $board, string $sign): bool
     {
         $combinations = [
             [0, 1, 2],
@@ -159,9 +168,9 @@ class GameService
         ];
 
         foreach ($combinations as $combination) {
-            if ($board[$combination[0]] === $player &&
-                $board[$combination[1]] === $player &&
-                $board[$combination[2]] === $player) {
+            if ($board[$combination[0]] === $sign &&
+                $board[$combination[1]] === $board[$combination[0]] &&
+                $board[$combination[2]] === $board[$combination[0]]) {
                 return true;
             }
         }

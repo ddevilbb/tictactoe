@@ -6,7 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Game extends Model
 {
-    public $fillable = ['player_id', 'status', 'end_date'];
+    const DIFFICULTY_EASY = 'easy';
+    const DIFFICULTY_HARD = 'hard';
+
+    const STATUS_WIN = 'win';
+    const STATUS_LOOSE = 'loose';
+    const STATUS_TIE = 'tie';
+
+    public $fillable = ['player_id', 'status', 'difficulty', 'end_date'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

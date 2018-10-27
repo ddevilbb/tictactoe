@@ -32,6 +32,6 @@ class PlayEventListener
      */
     public function handle(Play $event)
     {
-        $this->aiTurnService->makeTurn($event->game_id, $event->ai_player_type);
+        $this->aiTurnService->makeTurn($event->game_id, $event->ai_player_sign);
     }
 }

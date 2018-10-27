@@ -16,17 +16,17 @@ class Play
     /**
      * @var string
      */
-    public $ai_player_type;
+    public $ai_player_sign;
 
     /**
      * Create a new event instance.
      *
      * @param int $game_id
-     * @param string $ai_player_type
+     * @param string $ai_player_sign
      */
-    public function __construct(int $game_id, string $ai_player_type)
+    public function __construct(int $game_id, string $ai_player_sign)
     {
         $this->game_id = $game_id;
-        $this->ai_player_type = $ai_player_type;
+        $this->ai_player_sign = $ai_player_sign;
     }
 }

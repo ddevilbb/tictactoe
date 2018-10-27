@@ -52,11 +52,11 @@ var board = {
           _token: board.config.csrf,
           game_id: board.config.game.id,
           player_id: board.config.user.id,
-          player_type: board.config.user.sign,
+          player_sign: board.config.user.sign,
           location: location
         },
       }).done(function (response) {
-        board.showTurn(response.location, response.player_type);
+        board.showTurn(response.location, response.player_sign);
       });
     }
   },

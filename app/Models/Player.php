@@ -10,6 +10,12 @@ class Player extends Model implements AuthenticatableContract
 {
     use Authenticatable;
 
+    const SIGN_X = 'x';
+    const SIGN_O = 'o';
+
+    const PLAYER_TYPE_AI = 'ai';
+    const PLAYER_TYPE_HUMAN = 'human';
+
     /**
      * @var array
      */
