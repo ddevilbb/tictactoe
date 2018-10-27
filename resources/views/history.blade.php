@@ -23,7 +23,7 @@
                 </td>
             </tr>
             <tr class="table-active hidden-table-row" data-game-id="{{ $game->id }}">
-                <td colspan="4">
+                <td colspan="5">
                     <table class="table table-sm">
                         <thead>
                             <tr>
@@ -47,7 +47,7 @@
             </tr>
         @empty
             <tr>
-                <td colspan="4">
+                <td colspan="5">
                     <p class="text-center">Не сыграно ни одной игры!</p>
                 </td>
             </tr>
