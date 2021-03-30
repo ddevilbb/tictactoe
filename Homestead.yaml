@@ -11,6 +11,6 @@ sites:
         map: homestead.test
         to: /home/vagrant/code/public
 databases:
-    - tictactoe
+    - homestead
 name: tictactoe
 hostname: tictactoe
